@@ -14,12 +14,10 @@ let app = express();
 let postToBarcode = new PostToBarcode();
 let barcodeToPost = new BarcodeToPost();
 
-app.use(bodyPrser.urlencoded({extend:true}));
+app.use(bodyPrser.urlencoded({extend: true}));
 
 app.post('/inputPost', function (req, res) {
-    console.log(req.body)
-console.log(req.body.code)
-   // res.send(req.body)
+
     res.send(postToBarcode.changePost(req.body.code));
 });
 

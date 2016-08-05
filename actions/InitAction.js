@@ -8,24 +8,26 @@ class InitAction  {
 
     constructor() {
         this.name = 'init';
-        this.help = 'init interface:\n1-post to barcode\n2-barcode to post\nq-exit';
+       // this.help = 'init interface:\n1-post to barcode\n2-barcode to post\nq-exit';
 
     }
 
-    doAction(cmd) {
+    doAction(cmd, outputAndExit, currentActionName ) {
         switch (cmd) {
-            case '1':
-                return 'inputPost';
-            case '2':
-                return 'inputBarcode';
-            case 'q':
+            case'1':
+                outputAndExit("input post state:input post or input q to init");
+                currentActionName.value =  "inputPost";
+                break;
+            case'2':
+                outputAndExit('input barcode state:input barcode or input q to init')
+                currentActionName.value =  'inputBarcode';
+                break;
+            case'q':
                 process.exit(0);
-                return;
+                break;
             default:
-                console.log("Invalidation Input");
-                return 'init'
+                outputAndExit( 'Invalidation Input!');
         }
     }
 }
-
 module.exports = InitAction;
